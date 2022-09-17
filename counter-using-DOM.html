@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title> Counter </title>
+<style>
+#mainBox{
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    height:300px;
+    width:360px;
+    border:3px solid black;
+    background-color:pink;
+    margin:15px;
+}
+#title{
+    position:relative;
+    left:110px;
+    color:olive;
+}
+#h1Value{
+    padding:10px;
+    position:relative;
+    left:155px;
+    
+}
+#subBox{
+    position:relative;
+    left:55px;
+}
+#previousBtn{
+    height:50px;
+    width:80px;
+    background-color:red;
+}
+#resetBtn{
+    height:50px;
+    width:80px;
+    background-color:lightcoral;
+}
+#nextBtn{
+    height:50px;
+    width:80px;
+    background-color:green;
+}
+</style>
+</head>
+<body>
+<div id="mainBox">
+<h1 id="title">Counter</h1>
+<h1 id="h1Value">0</h1>
+<div id="subBox">
+<button id="previousBtn"> Previous </button>
+<button id="resetBtn"> Reset</button>
+<button id="nextBtn"> Next </button>
+</div>
+</div>
+<script>
+let nextBtn=document.getElementById("nextBtn");
+nextBtn.addEventListener("click",Increment);
+let mainBox=document.getElementById("mainBox");
+function Increment(e){
+    let currentBtn=e.currentTarget;
+    let previousValue=mainBox.children[1].textContent;
+    let temp=previousValue;
+    previousValue=Number(temp)+1;
+    mainBox.children[1].textContent=previousValue; 
+}
+let previousBtn=document.getElementById("previousBtn");
+previousBtn.addEventListener("click",Decrement);
+function Decrement(e){
+    let currentBtn=e.currentTarget;
+    let initialValue=mainBox.children[1].textContent;
+    let temp1=initialValue;
+    initialValue=Number(initialValue)-1;
+    mainBox.children[1].textContent=initialValue;
+}
+let resetBtn=document.getElementById("resetBtn");
+resetBtn.addEventListener("click",Reset);
+function Reset(){
+    mainBox.children[1].textContent=0;
+}
+</script>
+</body>
+</html>
